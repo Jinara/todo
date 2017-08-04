@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804021306) do
+ActiveRecord::Schema.define(version: 20170804222455) do
 
-  create_table "todos", force: :cascade do |t|
+  create_table "holi_todos", force: :cascade do |t|
     t.string "description", null: false
     t.datetime "date", null: false
     t.string "status", null: false
