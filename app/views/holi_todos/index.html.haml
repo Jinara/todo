@@ -1,0 +1,7 @@
+%h1="ToDo's List"
+%ul
+  %li
+    -@holi_todos.each do |holi_todo|
+      %p=holi_todo.description
+      %p=holi_todo.status
+      %p=holi_todo.date
