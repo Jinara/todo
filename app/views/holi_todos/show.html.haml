@@ -1,5 +1,9 @@
-%h1=Holi Todo:
-%h4='Descripción'
-%p=@todo.description
-%p=@todo.status
-%p=@todo.date
+%h1="Holi Todo:"
+%h4='Description'
+%p=@holi_todo.description
+%h4='Status'
+%p=@holi_todo.status
+%h4='Date'
+%p=@holi_todo.date
+%a{href: edit_holi_todo_path(@holi_todo)}
+  ="Edit Holi ToDo"

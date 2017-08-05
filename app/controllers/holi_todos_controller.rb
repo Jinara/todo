@@ -5,35 +5,45 @@ class HoliTodosController < ApplicationController
   end
 
   def show
-    @holi_todos = HoliTodo.find(params[:id])
+    @holi_todo = HoliTodo.find(params[:id])
   end
 
   def new
-    @holi_todos = HoliTodo.new
+    @holi_todo = HoliTodo.new
   end
 
   def create
-    @holi_todos = HoliTodo.new(holi_todos_params)
-    @holi_todos.save ? success_response : failure_response
+    @holi_todo = HoliTodo.new(holi_todos_params)
+    if @holi_todo.save
+      redirect_to holi_todos_path
+    else
+      flash.now[:error] = "pos ño"
+      render :new
+    end
   end
 
   def edit
-    @holi_todos = HoliTodo.find(params[:id])
+    @holi_todo = HoliTodo.find(params[:id])
   end
 
   def update
-    @holi_todos = HoliTodo.find(params[:id])
-    @holi_todos.update(holi_todos_params)
-    @holi_todos.save ? success_response : failure_response
+    @holi_todo = HoliTodo.find(params[:id])
+    @holi_todo.update(holi_todos_params)
+    if @holi_todo.save
+      redirect_to holi_todos_path
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @holi_todos = HoliTodo.find(params[:id])
-    @holi_todos.destroy
+    @holi_todo = HoliTodo.find(params[:id])
+    @holi_todo.destroy
+    redirect_to holi_todos_path
   end
 
   private
     def holi_todos_params
-      params.require(:holi_todos).permit(:date, :description, :status)
+      params.require(:holi_todo).permit(:date, :description, :status)
     end
 end

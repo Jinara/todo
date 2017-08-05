@@ -1,7 +1,20 @@
 %h1="ToDo's List"
-%ul
-  %li
-    -@holi_todos.each do |holi_todo|
-      %p=holi_todo.description
-      %p=holi_todo.status
-      %p=holi_todo.date
+%table
+  %th="Description"
+  %th="Status"
+  %th="Date"
+  %th="Actions"
+  -@holi_todos.each do |holi_todo|
+    %tr
+      %td=holi_todo.description
+      %td=holi_todo.status
+      %td=holi_todo.date
+      %td
+        %a{href: holi_todo_path(holi_todo)}
+          %h4="Show"
+        %a{href: edit_holi_todo_path(holi_todo)}
+          %h4="Edit"
+        %a{href: holi_todo_path(holi_todo), 'data-method' => :delete}
+          %h4="Delete"
+%a{href: new_holi_todo_path}
+  %h4="Create a Holi Todo"

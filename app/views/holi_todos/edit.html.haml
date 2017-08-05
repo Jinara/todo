@@ -1,0 +1,7 @@
+%h1="Editar Todo"
+=form_for @holi_todo, method: :put do |f|
+  =f.label :description
+  =f.text_field :description
+  =f.label :date
+  =f.datetime_field :date
+  =f.submit
