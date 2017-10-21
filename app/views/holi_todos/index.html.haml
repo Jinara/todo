@@ -1,21 +1,25 @@
-%h1="ToDo's List"
-%ul
-  %li= link_to("All", holi_todos_path)
-  %li= link_to("Done", holi_todos_path(status: "done"))
-  %li= link_to("Pending", holi_todos_path(status: "pending"))
-%table
-  %th="Description"
-  %th="Status"
-  %th="Date"
-  %th="Actions"
-  -@holi_todos.each do |holi_todo|
-    %tr
-      %td=holi_todo.description
-      %td=holi_todo.status
-      %td=holi_todo.date.strftime("%Y-%m-%d %H:%M")
-      %td
-        =link_to("Done", holi_todo_path(holi_todo, holi_todo: {status: :done}), method: :put)
-        =link_to("Delete", holi_todo_path(holi_todo), method: :delete)
+%div.todos-container
+  %h1.title="ToDo List"
+  %div.menu
+    %ul.menu-list
+      %li.menu-item= link_to("All", holi_todos_path)
+      %li.menu-item= link_to("Done", holi_todos_path(status: "done"))
+      %li.menu-item= link_to("Pending", holi_todos_path(status: "pending"))
+      %li.menu-item.btn.right
+        %a{href: new_holi_todo_path}= "Create Holi Todo"
+  %table.table
+    %tr.title-row
+      %th.title-cell="Description"
+      %th.title-cell="Status"
+      %th.title-cell="Date"
+      %th.title-cell="Actions"
+    -@holi_todos.each do |holi_todo|
+      %tr.row
+        %td.cell=holi_todo.description
+        %td.cell=holi_todo.status
+        %td.cell=holi_todo.date.strftime("%Y/%m/%d %H:%M")
+        %td.cell
+          =link_to("Details", holi_todo_path(holi_todo), class: "action info")
+          =link_to("Done", holi_todo_path(holi_todo, holi_todo: {status: :done}), method: :put, class: "action done")
+          =link_to("Delete", holi_todo_path(holi_todo), method: :delete, class: "action delete")
 
-%a{href: new_holi_todo_path}
-  %h4="Create a Holi Todo"

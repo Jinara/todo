@@ -13,3 +13,115 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+
+.title {
+  text-align: center;
+  color: #5c5757;
+}
+
+.todos-container {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.title-cell, .cell{
+  text-align: left;
+  padding: 15px 8px;
+  color: #fff;
+}
+
+.title-cell {
+  border-bottom: 0px;
+  color: #f5f2f0;
+}
+
+.row:nth-child(even) {
+  background-color: #ee6e73;
+}
+.row:nth-child(odd) {
+  background: #5c5757;
+}
+
+.row:nth-last-child(1) .cell:nth-child(1) {
+  border-bottom-left-radius: 5px;
+}
+.row:nth-last-child(1) .cell:nth-last-child(1) {
+  border-bottom-right-radius: 5px;
+}
+
+.title-row {
+  background: #5c5757;
+}
+
+.title-row .title-cell:nth-child(1) {
+  border-top-left-radius: 5px;
+}
+
+.title-row .title-cell:nth-last-child(1) {
+  border-top-right-radius: 5px;
+}
+
+.action {
+  padding: 5px 5px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+.action.info {
+  background: #26a69a;
+}
+.action.done {
+  background: #42a5f5 ;
+}
+.action.delete {
+  background: #212121;
+}
+
+.menu {
+  margin-bottom: 10px;
+  background: #81d4fa ;
+  border-radius: 5px;
+}
+
+.menu-list {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+
+.menu-item {
+  float: left;
+  border-right: 1px solid #fff;
+}
+
+.menu-item.right {
+  float: right;
+  border-left: 1px solid #fff;
+}
+
+.menu-item.btn {
+  background: #1e88e5;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.menu-item a {
+  text-align: center;
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+}
