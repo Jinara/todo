@@ -14,6 +14,7 @@ class HoliTodosController < ApplicationController
 
   def create
     @holi_todo = HoliTodo.new(holi_todos_params)
+    @holi_todo.status = "created"
     if @holi_todo.save
       redirect_to holi_todos_path
     else
@@ -44,6 +45,6 @@ class HoliTodosController < ApplicationController
 
   private
     def holi_todos_params
-      params.require(:holi_todo).permit(:date, :description, :status)
+      params.require(:holi_todo).permit(:date, :description)
     end
 end
