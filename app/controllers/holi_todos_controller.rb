@@ -1,7 +1,13 @@
 class HoliTodosController < ApplicationController
 
   def index
-    @holi_todos = HoliTodo.all
+    status = params[:status]
+
+    if status
+      @holi_todos = HoliTodo.where(status: status)
+    else
+      @holi_todos = HoliTodo.all
+    end
   end
 
   def show
@@ -14,11 +20,13 @@ class HoliTodosController < ApplicationController
 
   def create
     @holi_todo = HoliTodo.new(holi_todos_params)
-    @holi_todo.status = "created"
+    @holi_todo.status = "pending"
+
     if @holi_todo.save
+      flash[:success] = "Holi todo was created"
       redirect_to holi_todos_path
     else
-      flash.now[:error] = "pos ño"
+      flash[:error] = "An error has ocurred"
       render :new
     end
   end
@@ -30,9 +38,12 @@ class HoliTodosController < ApplicationController
   def update
     @holi_todo = HoliTodo.find(params[:id])
     @holi_todo.update(holi_todos_params)
+
     if @holi_todo.save
+      flash[:success] = "Holi todo was updated"
       redirect_to holi_todos_path
     else
+      flash[:error] = "An error has ocurred"
       render :edit
     end
   end
@@ -40,11 +51,13 @@ class HoliTodosController < ApplicationController
   def destroy
     @holi_todo = HoliTodo.find(params[:id])
     @holi_todo.destroy
+
+    flash[:success] = "Holi todo was deleted"
     redirect_to holi_todos_path
   end
 
   private
     def holi_todos_params
-      params.require(:holi_todo).permit(:date, :description)
+      params.require(:holi_todo).permit(:date, :description, :status)
     end
 end

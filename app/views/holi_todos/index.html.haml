@@ -1,4 +1,8 @@
 %h1="ToDo's List"
+%ul
+  %li= link_to("All", holi_todos_path)
+  %li= link_to("Done", holi_todos_path(status: "done"))
+  %li= link_to("Pending", holi_todos_path(status: "pending"))
 %table
   %th="Description"
   %th="Status"
@@ -8,13 +12,10 @@
     %tr
       %td=holi_todo.description
       %td=holi_todo.status
-      %td=holi_todo.date
+      %td=holi_todo.date.strftime("%Y-%m-%d %H:%M")
       %td
-        %a{href: holi_todo_path(holi_todo)}
-          %h4="Show"
-        %a{href: edit_holi_todo_path(holi_todo)}
-          %h4="Edit"
-        %a{href: holi_todo_path(holi_todo), 'data-method' => :delete}
-          %h4="Delete"
+        =link_to("Done", holi_todo_path(holi_todo, holi_todo: {status: :done}), method: :put)
+        =link_to("Delete", holi_todo_path(holi_todo), method: :delete)
+
 %a{href: new_holi_todo_path}
   %h4="Create a Holi Todo"

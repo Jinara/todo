@@ -24,3 +24,5 @@
 tmp/
 log/
 public/
+
+*.swp
